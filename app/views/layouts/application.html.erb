@@ -47,9 +47,13 @@
           </li>
         <% end %>
       <li class="nav-item">
-        <select class="form-control col-md-20">
-          <option>EN</option>
-          <option>FR</option>
+        <select class="form-control col-md-20" id="btnLang" onchange="window.location.href=this.value">
+          <% I18n.available_locales.each do |local| %>
+            <option value='<%= url_for(locale: local.to_s) %>'
+                    <%= "selected" if I18n.locale == local %>>
+              <%= local.upcase %>
+            </option>
+          <% end %>
         </select>
       </li>
       <li class="nav-item">
